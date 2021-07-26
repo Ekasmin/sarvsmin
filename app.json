@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "ekasmin-ecommerce",
+    "slug": "ekasmin-ecommerce",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "ekasmin-ecommerce"
+}
