@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-function TermsAndConditons({ navigation }) {
+function TermsAndConditions({ navigation }) {
     return (
         <View style={styles.heading}>
             <Text>Terms and Condtions</Text>
@@ -10,7 +10,7 @@ function TermsAndConditons({ navigation }) {
     )
 }
 
-export default TermsAndConditons
+export default TermsAndConditions
 
 
 const styles = StyleSheet.create({

@@ -14,8 +14,11 @@ function Register({ navigation }) {
     }
 
     const handleLogin = () => {
-        if (!email || !password || !rePassword || !phoneNumber || !isSelected) {
+        if (!email || !password || !rePassword || !phoneNumber) {
             alert('Please fill the required details')
+        }
+        else if (!isSelected) {
+            alert('Please check the checkbox')
         }
         else {
             navigation.navigate('Home')
@@ -40,9 +43,9 @@ function Register({ navigation }) {
                     style={styles.checkbox}
                 />
                 <Text style={styles.checkbox__label}>{""} I agree to the {""}
-                    <Text style={styles.checkbox__anchorTag}>Terms of Service</Text>
+                    <Text style={styles.checkbox__anchorTag} onClick={e => navigation.navigate("TermsAndConditions")}>Terms of Service</Text>
                     {""} and {""}
-                    <Text style={styles.checkbox__anchorTag}>Privacy Policy</Text>
+                    <Text style={styles.checkbox__anchorTag} onClick={e => navigation.navigate("TermsAndConditions")}>Privacy Policy</Text>
                 </Text>
             </View>
             <View style={styles.container__buttons}>
