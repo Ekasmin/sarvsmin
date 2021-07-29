@@ -1,8 +1,8 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Home from '../drawer/Home';
-import Profile from '../drawer/Profile';
+import Home from '../Screens/Home';
+import Profile from '../Screens/Profile';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 
