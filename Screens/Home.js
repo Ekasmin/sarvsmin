@@ -1,3 +1,4 @@
+import { DrawerActions } from '@react-navigation/native';
 import React, { useState } from 'react'
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -36,7 +37,7 @@ function Home({ navigation }) {
         <SafeAreaView style={styles.safeArea}>
 
             <View style={styles.topNav}>
-                <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={(e) => navigation.openDrawer(e)} />
+                <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
                 <Text style={styles.navtext}>EKASMIN</Text>
             </View>
 
@@ -48,6 +49,7 @@ function Home({ navigation }) {
             <ScrollView>
                 <ListHorizontal ListTitle="Products" renderItem={renderItem} />
                 <ListHorizontal ListTitle="Offers" renderItem={renderItem} />
+                <ListHorizontal ListTitle="5 Star Products" renderItem={renderItem} />
 
                 <ListVertical renderItem={renderItem} />
             </ScrollView>

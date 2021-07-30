@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
-import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View, CheckBox } from 'react-native';
+import TextField from '@material-ui/core/TextField';
 
 function Login({ navigation }) {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [isSelected, setIsSelected] = useState(false);
+
+    const CheckboxSelection = (e) => {
+        isSelected === true ? setIsSelected(false) : setIsSelected(true);
+    }
 
     const handleLogin = (e) => {
         if (!email || !password) {
@@ -18,21 +24,51 @@ function Login({ navigation }) {
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.container__heading}>
-                <Text style={styles.headingOne}>EKASMIN</Text>
-                <Text style={styles.headingTwo}>Login</Text>
+                <Text style={styles.headingOne}>Welcome Back,</Text>
+                <Text style={styles.headingTwo}>Log in!</Text>
             </View>
-            <View style={styles.container__inputs}>
-                <TextInput style={styles.inputs} placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-                <TextInput style={styles.inputs} placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-            </View>
-            <View style={styles.container__buttons}>
-                <TouchableOpacity style={styles.buttonsOne}><Text style={styles.buttons__text} onClick={e => handleLogin(e)}>Login</Text></TouchableOpacity>
-                {/* <TouchableOpacity style={styles.buttonsTwo}><Text style={styles.buttons__text}>Cancel</Text></TouchableOpacity> */}
-            </View>
-            <View style={styles.container__footer}>
-                <Text style={styles.footerText}>Don't have an account?
-                    <Text style={styles.footerText__signUp} onClick={e => navigation.navigate('Register')}> Sign Up</Text>
-                </Text>
+            <View style={styles.centerBox}>
+                <View style={styles.container__inputs}>
+                    <TextField
+                        // style={styles.inputs}
+                        value={email}
+                        onChangeText={(e) => setEmail(e.target.value)}
+                        label="E-mail"
+                        // color="secondary"
+                        variant="outlined"
+                        type="email"
+                        fullWidth
+                        required
+                    />
+                    <br />
+                    <TextField
+                        // style={styles.inputs}
+                        value={password}
+                        onChangeText={(e) => setPassword(e.target.value)}
+                        label="Password"
+                        // color="secondary"
+                        variant="outlined"
+                        type="password"
+                        required
+                    />
+                    <View style={styles.rememberMe}>
+                        <CheckBox
+                            value={isSelected}
+                            onChange={e => CheckboxSelection(e)}
+                        />
+                        <Text style={styles.rememberMeText}>Remember Me</Text>
+                        <Text style={styles.forgotPassword}>Forgot Password?</Text>
+                    </View>
+                </View>
+                <View style={styles.container__buttons}>
+                    <TouchableOpacity style={styles.buttonsOne}><Text style={styles.buttons__text} onClick={e => handleLogin(e)}>Login</Text></TouchableOpacity>
+                    {/* <TouchableOpacity style={styles.buttonsTwo}><Text style={styles.buttons__text}>Cancel</Text></TouchableOpacity> */}
+                </View>
+                <View style={styles.container__footer}>
+                    <Text style={styles.footerText}>Don't have an account?
+                        <Text style={styles.footerText__signUp} onClick={e => navigation.navigate('Register')}> Sign Up</Text>
+                    </Text>
+                </View>
             </View>
         </SafeAreaView>
     )
@@ -42,28 +78,28 @@ export default Login
 
 const styles = StyleSheet.create({
     safeArea: {
-        display: "grid",
-        placeItems: "center",
+        flex: 1,
     },
     container__heading: {
         margin: "20px",
-        flex: 1,
-        alignItems: "center",
-        margin: "10px",
-        marginTop: "10vh",
+        marginLeft: "20px",
+        marginTop: "80px",
     },
     headingOne: {
+        fontSize: "22px",
+        padding: "5px",
+        fontWeight: 400,
+    },
+    headingTwo: {
         fontSize: "32px",
         padding: "5px",
         fontWeight: 600,
-        borderBottomColor: 'black',
-        borderBottomWidth: 1,
-        marginBottom: "10px",
+        marginBottom: "40px",
     },
-    headingTwo: {
-        fontSize: "28px",
-        fontWeight: 400,
-        marginTop: "10px",
+    centerBox: {
+        flex: 1,
+        alignItems: 'center',
+        marginTop: 40,
     },
     container__inputs: {
         marginLeft: "20px",
@@ -85,6 +121,22 @@ const styles = StyleSheet.create({
         shadowRadius: 1,
         elevation: 5,
     },
+    rememberMe: {
+        flexDirection: 'row',
+        textAlign: "left",
+        marginTop: 20,
+        marginLeft: 5,
+        position: "relative",
+        width: "75vw",
+        alignItems: "center",
+    },
+    rememberMeText: {
+        marginLeft: 5,
+    },
+    forgotPassword: {
+        position: "absolute",
+        right: 10,
+    },
     container__buttons: {
         flexDirection: "row",
         textAlign: "center",
@@ -94,28 +146,12 @@ const styles = StyleSheet.create({
     },
     buttonsOne: {
         margin: "10px",
-        padding: "20px",
-        paddingLeft: "30px",
-        paddingRight: "30px",
+        paddingVertical: "10px",
+        paddingHorizontal: "20px",
         border: "0.5px solid #059862",
         width: "140px",
         backgroundColor: "#059862",
         borderRadius: "10px",
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 5,
-    },
-    buttonsTwo: {
-        margin: "10px",
-        padding: "20px",
-        paddingLeft: "30px",
-        paddingRight: "30px",
-        border: "0.5px solid #F51720",
-        width: "140px",
-        borderRadius: "10px",
-        backgroundColor: "#F51720",
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.8,
@@ -133,7 +169,7 @@ const styles = StyleSheet.create({
         fontSize: "15px",
     },
     footerText__signUp: {
-        textDecorationLine: 'underline',
+        // textDecorationLine: 'underline',
         color: "blue",
         cursor: "pointer",
     },
