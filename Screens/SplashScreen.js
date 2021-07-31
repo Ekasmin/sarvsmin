@@ -30,7 +30,7 @@ function SplashScreen({ navigation }) {
     }
 
     setTimeout(() => {
-        navigation.replace("Register")
+        navigation.replace("SignUpPage")
     }, 4000)
 
     return (

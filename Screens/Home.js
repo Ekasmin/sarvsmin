@@ -1,15 +1,21 @@
 import { DrawerActions } from '@react-navigation/native';
 import React, { useState } from 'react'
-import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Alert, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
+import IconMaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ListHorizontal, { ListVertical } from '../ListItems/HomeList';
 
 function Home({ navigation }) {
     const [searchText, setsearchText] = useState();
 
+    const rowTitles = [{
+        "1": "Products",
+        "2": "Offers",
+    }];
+
     const Item = ({ title, price, validity, image, rating }) => {
         return (
-            <View style={styles.item}>
+            <View style={styles.itemHoriz}>
                 <View style={styles.ImageRating}>
                     <Image style={styles.itemImage} source={{
                         uri: `${image}`,
@@ -33,12 +39,28 @@ function Home({ navigation }) {
         <Item title={item.title} price={item.price} validity={item.validity} image={item.image} />
     );
 
+    const Logout = () => {
+        Alert.alert(
+            "You sure to",
+            "Logout?",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => navigation.navigate("Home"),
+                    style: "cancel"
+                },
+                { text: "Sure", onPress: () => navigation.navigate("Login") }
+            ]
+        );
+    }
+
     return (
         <SafeAreaView style={styles.safeArea}>
 
             <View style={styles.topNav}>
                 <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
                 <Text style={styles.navtext}>EKASMIN</Text>
+                <IconMaterialIcons name="logout" style={styles.logoutIcon} size={30} onPress={Logout} />
             </View>
 
             <View style={styles.search}>
@@ -49,7 +71,11 @@ function Home({ navigation }) {
             <ScrollView>
                 <ListHorizontal ListTitle="Products" renderItem={renderItem} />
                 <ListHorizontal ListTitle="Offers" renderItem={renderItem} />
-                <ListHorizontal ListTitle="5 Star Products" renderItem={renderItem} />
+
+                {/* {rowTitles.map((rowTitle) => {
+                    console.log({ rowTitle });
+                    <ListHorizontal ListTitle={rowTitle} renderItem={renderItem} />
+                })} */}
 
                 <ListVertical renderItem={renderItem} />
             </ScrollView>
@@ -83,6 +109,12 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 500,
     },
+    logoutIcon: {
+        position: "absolute",
+        right: 0,
+        resizeMode: 'contain',
+        marginVertical: 15,
+    },
     search: {
         flexDirection: "row",
         margin: 15,
@@ -112,7 +144,7 @@ const styles = StyleSheet.create({
         top: 7,
         right: 25,
     },
-    item: {
+    itemHoriz: {
         backgroundColor: '#fff',
         padding: 20,
         paddingVertical: 20,
@@ -120,7 +152,17 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         width: 250,
         height: 220,
+        marginBottom: 20,
     },
+    // itemVert: {
+    //     backgroundColor: '#fff',
+    //     padding: 20,
+    //     paddingVertical: 20,
+    //     marginRight: 20,
+    //     borderRadius: 15,
+    //     width: 250,
+    //     height: 220,
+    // },
     ImageRating: {
         flexDirection: "row",
         alignItems: "flex-start",

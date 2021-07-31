@@ -12,7 +12,7 @@ const ListHorizontal = ({ ListTitle, renderItem }) => {
                 showsHorizontalScrollIndicator={false}
                 data={Data}
                 renderItem={renderItem}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item.id.toString()}
             />
         </View>
     )
@@ -30,7 +30,7 @@ export const ListVertical = ({ ListTitle, renderItem }) => {
                 showsHorizontalScrollIndicator={false}
                 data={Data}
                 renderItem={renderItem}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item.id.toString()}
             />
         </View>
     )
@@ -39,12 +39,10 @@ export const ListVertical = ({ ListTitle, renderItem }) => {
 
 const styles = StyleSheet.create({
     ListContainerHoriz: {
-        // flexx: 1,
         flexDirection: "column",
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,
-        marginRight: 6,
     },
     ListTitle: {
         fontSize: 20,
@@ -54,7 +52,6 @@ const styles = StyleSheet.create({
     ListContainerVert: {
         flex: 1,
         padding: 20,
-        marginVertical: 8,
         marginHorizontal: 16,
     },
 })
