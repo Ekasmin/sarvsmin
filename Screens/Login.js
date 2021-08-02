@@ -62,11 +62,13 @@ function Login({ navigation }) {
                             <Text style={styles.forgotPassword}>Forgot Password?</Text>
                         </View>
                     </View>
+
                     <View style={styles.container__button}>
                         <TouchableOpacity style={styles.button}>
                             <Text style={styles.button__text} onClick={e => handleLogin(e)}>Login</Text>
                         </TouchableOpacity>
                     </View>
+
                     <View style={styles.container__footer}>
                         <Text style={styles.footerText}>Don't have an account?
                             <Text style={styles.footerText__signUp} onClick={e => navigation.navigate('SignUpForm')}> Sign Up</Text>

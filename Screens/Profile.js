@@ -6,16 +6,24 @@ function Profile({ navigation }) {
     const [searchText, setsearchText] = useState();
     return (
         // <SafeAreaView style={styles.safeArea}>
-        //     <View style={styles.topNav}>
-        //         <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.openDrawer()} />
-        //         <Text style={styles.navtext}>PROFILE</Text>
-        //     </View>
+        //     <View style={styles.container}>
+        //     <View style={styles.header}></View>
+        //     <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
+        //     <View style={styles.body}>
+        //       <View style={styles.bodyContent}>
+        //         <Text style={styles.name}>Name</Text>
+        //         <Text style={styles.info}>UX Designer / Mobile developer</Text>
+        //         <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
 
-        //     <View style={styles.search}>
-        //         <TextInput style={styles.searchInput} placeholder="Search" value={searchText} onChange={e => setsearchText(e.target.value)} underlineColorAndroid='transparent' />
-        //         <IconFontAwesome style={styles.searchIcon} name="search" size={20} />
-
-        //     </View>
+        //         <TouchableOpacity style={styles.buttonContainer}>
+        //           <Text>Opcion 1</Text>  
+        //         </TouchableOpacity>              
+        //         <TouchableOpacity style={styles.buttonContainer}>
+        //           <Text>Opcion 2</Text> 
+        //         </TouchableOpacity>
+        //       </View>
+        //   </View>
+        // </View>
         // </SafeAreaView>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Button onPress={() => navigation.goBack()} title="Go back home" />
@@ -29,50 +37,59 @@ const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
     },
-    topNav: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        margin: 20,
+    header: {
+        backgroundColor: "#00BFFF",
+        height: 200,
     },
-    navIcon: {
-        position: "absolute",
-        left: -18,
-        resizeMode: 'contain',
-        margin: 15,
-        marginLeft: 20,
+    avatar: {
+        width: 130,
+        height: 130,
+        borderRadius: 63,
+        borderWidth: 4,
+        borderColor: "white",
+        marginBottom: 10,
+        alignSelf: 'center',
+        position: 'absolute',
+        marginTop: 130
     },
-    navtext: {
-        fontSize: 20,
-        fontWeight: 500,
+    name: {
+        fontSize: 22,
+        color: "#FFFFFF",
+        fontWeight: '600',
     },
-    search: {
-        flexDirection: "row",
-        margin: 15,
-        height: 40,
-        borderRadius: 15,
-        postion: "absolute",
-        border: "1px solid black",
-        backgroundColor: "#F5F5F5",
+    body: {
+        marginTop: 40,
     },
-    searchInput: {
-        height: 30,
-        position: "relative",
-        left: 10,
-        top: 5,
-        width: "80%",
-        fontSize: 18,
-        paddingLeft: 10,
-        // Remove outlines from TextInput
-        outlineColor: "#F5F5F5",
-        outlineOffset: 0,
-        outlineStyle: "none",
-        outlineWidth: 0,
+    bodyContent: {
+        flex: 1,
+        alignItems: 'center',
+        padding: 30,
     },
-    searchIcon: {
-        position: "absolute",
-        color: "black",
-        top: 7,
-        right: 25,
+    name: {
+        fontSize: 28,
+        color: "#696969",
+        fontWeight: "600"
+    },
+    info: {
+        fontSize: 16,
+        color: "#00BFFF",
+        marginTop: 10
+    },
+    description: {
+        fontSize: 16,
+        color: "#696969",
+        marginTop: 10,
+        textAlign: 'center'
+    },
+    buttonContainer: {
+        marginTop: 10,
+        height: 45,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 20,
+        width: 250,
+        borderRadius: 30,
+        backgroundColor: "#00BFFF",
     },
 })

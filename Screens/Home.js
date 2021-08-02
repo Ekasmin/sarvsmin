@@ -8,10 +8,10 @@ import ListHorizontal, { ListVertical } from '../ListItems/HomeList';
 function Home({ navigation }) {
     const [searchText, setsearchText] = useState();
 
-    const rowTitles = [{
-        "1": "Products",
-        "2": "Offers",
-    }];
+    // const rowTitles = [{
+    //     "1": "Products",
+    //     "2": "Offers",
+    // }];
 
     const Item = ({ title, price, validity, image, rating }) => {
         return (
@@ -60,7 +60,7 @@ function Home({ navigation }) {
             <View style={styles.topNav}>
                 <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
                 <Text style={styles.navtext}>EKASMIN</Text>
-                <IconMaterialIcons name="logout" style={styles.logoutIcon} size={30} onPress={Logout} />
+                <IconFontAwesome name="sign-in" style={styles.logoutIcon} size={30} onPress={Logout} />
             </View>
 
             <View style={styles.search}>
@@ -69,6 +69,9 @@ function Home({ navigation }) {
             </View>
 
             <ScrollView>
+                {/* <IconFontAwesome style={styles.filterIcon} name="sliders" size={30} />
+                <Text style={styles.filterText}>Filter</Text> */}
+
                 <ListHorizontal ListTitle="Products" renderItem={renderItem} />
                 <ListHorizontal ListTitle="Offers" renderItem={renderItem} />
 
@@ -144,6 +147,18 @@ const styles = StyleSheet.create({
         top: 7,
         right: 25,
     },
+    // filterIcon: {
+    //     position: "absolute",
+    //     color: "black",
+    //     right: 25,
+    // },
+    // filterText: {
+    //     position: "absolute",
+    //     color: "black",
+    //     right: 65,
+    //     top: 10,
+    //     fontSize: 12,
+    // },
     itemHoriz: {
         backgroundColor: '#fff',
         padding: 20,

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     buttonOne: {
         paddingHorizontal: 25,
         paddingVertical: 8,
-        width: 220,
+        width: "80vw",
         backgroundColor: "#0000FF",
         borderRadius: 25,
         color: "#fff",
@@ -76,7 +76,9 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     container__footer: {
-        marginTop: -130,
+        // marginTop: -120,
+        position: "absolute",
+        bottom: 20,
     },
     footerText: {
         fontSize: "15px",
