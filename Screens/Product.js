@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     Text,
@@ -9,7 +9,11 @@ import {
     ScrollView,
     FlatList,
     Button,
+    TextInput,
+    SafeAreaView,
+    Dimensions,
 } from 'react-native';
+import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 
 //  Created a product screen to render the products when they get pressed
 //  And a Profile Screen to render the details of the user
@@ -17,144 +21,170 @@ import {
 
 function Product({ navigation }) {
 
-    const handleAddToCart = () => {
-        Alert.alert("Success", "Product has beed added to cart")
-    }
+    const [searchText, setsearchText] = useState();
 
+    const images = ["logo", "bg-1"];
+    const { width } = Dimensions.get("window")
+    const height = width * 100 / 60   //60%
     return (
-        <View style={styles.container}>
-            <ScrollView>
-                <View style={{ alignItems: 'center', marginHorizontal: 30 }}>
-                    <Image style={styles.productImg} source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3v7KDJN7TAoJa5sFaPWcp1HX8JFcpF3z5K3ngz4L6kWoEP7Ca" }} />
-                    <Text style={styles.name}>Super Soft T-Shirt</Text>
-                    <Text style={styles.price}>$ 12.22</Text>
-                    <Text style={styles.description}>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                        natoque penatibus et magnis dis parturient montes,
-                        nascetur ridiculus mus. Donec quam felis, ultricies nec
-                    </Text>
+        <SafeAreaView style={styles.safeArea}>
+            <View style={styles.topNav}>
+
+                <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+
+                <View style={styles.search}>
+                    <TextInput style={styles.searchInput} placeholder="Search" value={searchText} onChange={e => setsearchText(e.target.value)} underlineColorAndroid='transparent' />
+                    <IconFontAwesome style={styles.searchIcon} name="search" size={20} />
                 </View>
-                <View style={styles.starContainer}>
-                    <Image style={styles.star} source={{ uri: "https://img.icons8.com/color/40/000000/star.png" }} />
-                    <Image style={styles.star} source={{ uri: "https://img.icons8.com/color/40/000000/star.png" }} />
-                    <Image style={styles.star} source={{ uri: "https://img.icons8.com/color/40/000000/star.png" }} />
-                    <Image style={styles.star} source={{ uri: "https://img.icons8.com/color/40/000000/star.png" }} />
-                    <Image style={styles.star} source={{ uri: "https://img.icons8.com/color/40/000000/star.png" }} />
+
+            </View>
+
+            <ScrollView style={styles.scrollView}>
+
+                <Image style={styles.image} source={require('../assets/logo.jpg')} />
+
+                {/* <ScrollView horizontal style={styles.image}>
+                    {images.map((image, index) => (
+                        <Image key={index} source={require(`../assets/${image}.jpg`)} />
+                    ))}
+                </ScrollView> */}
+
+                <View style={styles.productDetails}>
+                    <Text style={styles.textName}>Product Name</Text>
+                    <Text style={styles.textPrice}>Price</Text>
+                    <Text style={styles.textDeliveryCharge}>Delivery Charge</Text>
+                    <Text style={styles.textOverview}>Overview</Text>
+                    <Text style={styles.textStars}>Stars</Text>
+                    <Text style={styles.textReviews}>Reviews</Text>
+
                 </View>
-                <View style={styles.contentColors}>
-                    <TouchableOpacity style={[styles.btnColor, { backgroundColor: "#00BFFF" }]}></TouchableOpacity>
-                    <TouchableOpacity style={[styles.btnColor, { backgroundColor: "#FF1493" }]}></TouchableOpacity>
-                    <TouchableOpacity style={[styles.btnColor, { backgroundColor: "#00CED1" }]}></TouchableOpacity>
-                    <TouchableOpacity style={[styles.btnColor, { backgroundColor: "#228B22" }]}></TouchableOpacity>
-                    <TouchableOpacity style={[styles.btnColor, { backgroundColor: "#20B2AA" }]}></TouchableOpacity>
-                    <TouchableOpacity style={[styles.btnColor, { backgroundColor: "#FF4500" }]}></TouchableOpacity>
+
+                <View style={styles.reviewContainer}>
+
+                    <View style={styles.reviewHeader}>
+                        <Text style={styles.textCustomerName}>Customer Name</Text>
+                        <Text style={styles.textStarsReview}>Stars</Text>
+                    </View>
+
+                    <Text style={styles.textReview}>Content</Text>
                 </View>
-                <View style={styles.contentSize}>
-                    <TouchableOpacity style={styles.btnSize}><Text>S</Text></TouchableOpacity>
-                    <TouchableOpacity style={styles.btnSize}><Text>M</Text></TouchableOpacity>
-                    <TouchableOpacity style={styles.btnSize}><Text>L</Text></TouchableOpacity>
-                    <TouchableOpacity style={styles.btnSize}><Text>XL</Text></TouchableOpacity>
-                </View>
-                <View style={styles.separator}></View>
-                <View style={styles.addToCarContainer}>
-                    <TouchableOpacity style={styles.shareButton} onPress={handleAddToCart()}>
-                        <Text style={styles.shareButtonText}>Add To Cart</Text>
-                    </TouchableOpacity>
-                </View>
+
             </ScrollView>
-        </View>
+        </SafeAreaView>
     );
 }
 
 export default Product;
 
 const styles = StyleSheet.create({
-    container: {
+    safeArea: {
         flex: 1,
-        marginTop: 20,
+        backgroundColor: "white",
     },
-    productImg: {
-        width: 200,
-        height: 200,
+    topNav: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: 20,
     },
-    name: {
-        fontSize: 28,
-        color: "#696969",
-        fontWeight: 'bold'
+    navIcon: {
+        position: "absolute",
+        left: 18,
+        resizeMode: 'contain',
     },
-    price: {
-        marginTop: 10,
-        fontSize: 18,
-        color: "green",
-        fontWeight: 'bold'
-    },
-    description: {
-        textAlign: 'center',
-        marginTop: 10,
-        color: "#696969",
-    },
-    star: {
-        width: 40,
+    search: {
+        flexDirection: "row",
+        margin: 15,
         height: 40,
+        width: "80%",
+        marginLeft: 60,
+        borderRadius: 15,
+        postion: "absolute",
+        border: "1px solid black",
+        backgroundColor: "#F5F5F5",
     },
-    btnColor: {
+    searchInput: {
         height: 30,
-        width: 30,
-        borderRadius: 30,
-        marginHorizontal: 3
+        position: "relative",
+        left: 10,
+        top: 5,
+        width: "90%",
+        fontSize: 18,
+        paddingLeft: 10,
+        // Remove outlines from TextInput
+        outlineColor: "#F5F5F5",
+        outlineOffset: 0,
+        outlineStyle: "none",
+        outlineWidth: 0,
     },
-    btnSize: {
-        height: 40,
-        width: 40,
-        borderRadius: 40,
-        borderColor: '#778899',
-        borderWidth: 1,
-        marginHorizontal: 3,
-        backgroundColor: 'white',
-
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+    searchIcon: {
+        position: "absolute",
+        color: "black",
+        top: 7,
+        right: 25,
     },
-    starContainer: {
-        justifyContent: 'center',
-        marginHorizontal: 30,
-        flexDirection: 'row',
-        marginTop: 20
+    scrollView: {
+        flex: 1,
     },
-    contentColors: {
-        justifyContent: 'center',
-        marginHorizontal: 30,
-        flexDirection: 'row',
-        marginTop: 20
-    },
-    contentSize: {
-        justifyContent: 'center',
-        marginHorizontal: 30,
-        flexDirection: 'row',
-        marginTop: 20
-    },
-    separator: {
-        height: 2,
-        backgroundColor: "#eeeeee",
-        marginTop: 20,
-        marginHorizontal: 30
-    },
-    shareButton: {
+    image: {
         marginTop: 10,
-        height: 45,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 30,
-        backgroundColor: "#00BFFF",
+        height: 240,
+        width: 200,
+        maxHeight: 260,
+        maxWidth: 250,
+        alignSelf: "center",
     },
-    shareButtonText: {
-        color: "#FFFFFF",
+    productDetails: {
+        paddingLeft: 20,
+    },
+    textName: {
+        marginTop: 40,
         fontSize: 20,
     },
-    addToCarContainer: {
-        marginHorizontal: 30
-    }
+    textPrice: {
+        marginTop: 10,
+        fontSize: 20,
+    },
+    textDeliveryCharge: {
+        marginTop: 10,
+        fontSize: 20,
+    },
+    textOverview: {
+        marginTop: 10,
+        fontSize: 20,
+    },
+    textStars: {
+        marginTop: 10,
+        fontSize: 20,
+    },
+    textReviews: {
+        marginTop: 10,
+        fontSize: 20,
+    },
+    reviewContainer: {
+        flex: 1,
+        height: 200,
+        width: 450,
+        marginLeft: 20,
+        marginTop: 20,
+        border: "1px solid black",
+        borderRadius: 10,
+        backgroundColor: "whitesmoke"
+    },
+    reviewHeader: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        margin: 15,
+    },
+    textCustomerName: {
+        fontSize: 20,
+    },
+    textStarsReview: {
+        marginRight: 20,
+        fontSize: 18,
+    },
+    textReview: {
+        margin: 15,
+        fontSize: 20,
+    },
 });

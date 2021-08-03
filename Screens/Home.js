@@ -58,14 +58,14 @@ function Home({ navigation }) {
         <SafeAreaView style={styles.safeArea}>
 
             <View style={styles.topNav}>
-                <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
-                <Text style={styles.navtext}>EKASMIN</Text>
-                <IconFontAwesome name="sign-in" style={styles.logoutIcon} size={30} onPress={Logout} />
-            </View>
 
-            <View style={styles.search}>
-                <TextInput style={styles.searchInput} placeholder="Search" value={searchText} onChange={e => setsearchText(e.target.value)} underlineColorAndroid='transparent' />
-                <IconFontAwesome style={styles.searchIcon} name="search" size={20} />
+                <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+
+                <View style={styles.search}>
+                    <TextInput style={styles.searchInput} placeholder="Search" value={searchText} onChange={e => setsearchText(e.target.value)} underlineColorAndroid='transparent' />
+                    <IconFontAwesome style={styles.searchIcon} name="search" size={20} />
+                </View>
+
             </View>
 
             <ScrollView>
@@ -103,25 +103,15 @@ const styles = StyleSheet.create({
     },
     navIcon: {
         position: "absolute",
-        left: -18,
+        left: 18,
         resizeMode: 'contain',
-        margin: 15,
-        marginLeft: 20,
-    },
-    navtext: {
-        fontSize: 20,
-        fontWeight: 500,
-    },
-    logoutIcon: {
-        position: "absolute",
-        right: 0,
-        resizeMode: 'contain',
-        marginVertical: 15,
     },
     search: {
         flexDirection: "row",
         margin: 15,
         height: 40,
+        width: "80%",
+        marginLeft: 60,
         borderRadius: 15,
         postion: "absolute",
         border: "1px solid black",
@@ -132,7 +122,7 @@ const styles = StyleSheet.create({
         position: "relative",
         left: 10,
         top: 5,
-        width: "80%",
+        width: "90%",
         fontSize: 18,
         paddingLeft: 10,
         // Remove outlines from TextInput
