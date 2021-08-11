@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 25,
         paddingVertical: 8,
         borderRadius: 25,
-        border: "1px solid black",
+        borderWidth: 1,
         textAlign: "center",
     },
     socialIcons: {
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         bottom: 20,
     },
     footerText: {
-        fontSize: "15px",
+        fontSize: 15,
     },
     footerText__signUp: {
         color: "blue",

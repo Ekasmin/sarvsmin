@@ -38,6 +38,16 @@ function SplashScreen({ navigation }) {
             <FadeInView style={styles.container__fade}>
                 <Image style={styles.container__image} source={require('../assets/logo.jpg')} />
             </FadeInView>
+            {/* <Video
+                source={require('../assets/Ekasmin_Video.mp4')}
+                rate={1.0}
+                volume={0}
+                muted={true}
+                // resizeMode={"cover"}
+                repeat
+                style={styles.container__video}
+            /> */}
+
         </View>
     )
 }

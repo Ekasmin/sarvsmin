@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         marginLeft: 60,
         borderRadius: 15,
         postion: "absolute",
-        border: "1px solid black",
+        borderWidth: 1,
         backgroundColor: "#F5F5F5",
     },
     searchInput: {
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     itemImage: {
         width: 100,
         height: 80,
-        border: '1px solid black',
+        borderWidth: 1,
         borderRadius: 15,
     },
     itemTitle: {
