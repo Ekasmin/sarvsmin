@@ -1,6 +1,6 @@
 import { DrawerActions } from '@react-navigation/native';
 import React, { useState } from 'react'
-import { Alert, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Alert, Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import IconMaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ListHorizontal, { ListVertical } from '../ListItems/HomeList';
@@ -57,30 +57,54 @@ function Home({ navigation }) {
     return (
         <SafeAreaView style={styles.safeArea}>
 
+            {/* Top Navigation Bar */}
             <View style={styles.topNav}>
 
-                <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+                {/* Left Nav Row */}
+                <View style={styles.leftNav}>
+                    {/* Navigation-Bar Icon */}
+                    <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
 
-                <View style={styles.search}>
+                    {/* Search Icon */}
+                    {/* <View style={styles.search}>
                     <TextInput style={styles.searchInput} placeholder="Search" value={searchText} onChange={e => setsearchText(e.target.value)} underlineColorAndroid='transparent' />
-                    <IconFontAwesome style={styles.searchIcon} name="search" size={20} />
+                    </View> */}
+
+                    {/* Logo */}
+                    <Image style={styles.logo} source={require('../assets/logo.jpg')} />
+
+                    {/* Title Text */}
+                    <Text style={styles.titleText}>Ekasmin</Text>
+                </View>
+
+                {/* Right Nav Row */}
+                <View style={styles.rightNav}>
+                    {/* Search Icon */}
+                    <IconFontAwesome style={styles.searchIcon} name="search" size={22} />
+
+                    {/* WishList Icon */}
+                    <IconFontAwesome style={styles.wishListIcon} name="heart-o" size={22} />
+
+                    {/* Profile Avatar */}
+                    <IconFontAwesome style={styles.avatarIcon} name="smile-o" size={24} />
                 </View>
 
             </View>
 
+            {/* Body */}
             <ScrollView>
                 {/* <IconFontAwesome style={styles.filterIcon} name="sliders" size={30} />
                 <Text style={styles.filterText}>Filter</Text> */}
 
-                <ListHorizontal ListTitle="Products" renderItem={renderItem} />
-                <ListHorizontal ListTitle="Offers" renderItem={renderItem} />
+                {/* <ListHorizontal ListTitle="Products" renderItem={renderItem} />
+                <ListHorizontal ListTitle="Offers" renderItem={renderItem} /> */}
 
                 {/* {rowTitles.map((rowTitle) => {
                     console.log({ rowTitle });
                     <ListHorizontal ListTitle={rowTitle} renderItem={renderItem} />
                 })} */}
 
-                <ListVertical renderItem={renderItem} />
+                {/* <ListVertical renderItem={renderItem} /> */}
             </ScrollView>
 
         </SafeAreaView>
@@ -94,61 +118,77 @@ export default Home
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
+        backgroundColor: "white",
     },
     topNav: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
-        margin: 20,
+        height: 40,
+        width: Dimensions.get('window').width,
+        marginTop: 10,
+    },
+    leftNav: {
+        flexDirection: "row",
+        alignItems: "center",
+        flex: 1,
     },
     navIcon: {
-        position: "absolute",
-        left: 18,
+        marginLeft: 22,
         resizeMode: 'contain',
     },
-    search: {
-        flexDirection: "row",
-        margin: 15,
-        height: 40,
-        width: "80%",
-        marginLeft: 60,
-        borderRadius: 15,
-        postion: "absolute",
-        borderWidth: 1,
-        backgroundColor: "#F5F5F5",
+    // search: {
+    //     flexDirection: "row",
+    //     margin: 15,
+    //     height: 40,
+    //     width: "80%",
+    //     marginLeft: 60,
+    //     borderRadius: 15,
+    //     postion: "absolute",
+    //     borderWidth: 1,
+    //     backgroundColor: "#F5F5F5",
+    // },
+    // searchInput: {
+    //     height: 30,
+    //     position: "relative",
+    //     left: 10,
+    //     top: 5,
+    //     width: "90%",
+    //     fontSize: 18,
+    //     paddingLeft: 10,
+    //     // Remove outlines from TextInput
+    //     outlineColor: "#F5F5F5",
+    //     outlineOffset: 0,
+    //     outlineStyle: "none",
+    //     outlineWidth: 0,
+    // },
+    logo: {
+        width: 30,
+        height: 32,
+        resizeMode: 'contain',
+        marginLeft: 15,
     },
-    searchInput: {
-        height: 30,
-        position: "relative",
-        left: 10,
-        top: 5,
-        width: "90%",
-        fontSize: 18,
-        paddingLeft: 10,
-        // Remove outlines from TextInput
-        outlineColor: "#F5F5F5",
-        outlineOffset: 0,
-        outlineStyle: "none",
-        outlineWidth: 0,
+    titleText: {
+        fontSize: 20,
+        marginLeft: 5,
+        fontWeight: 500,
+    },
+    rightNav: {
+        flexDirection: "row",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "flex-end",
     },
     searchIcon: {
-        position: "absolute",
         color: "black",
-        top: 7,
-        right: 25,
+        marginRight: 30,
     },
-    // filterIcon: {
-    //     position: "absolute",
-    //     color: "black",
-    //     right: 25,
-    // },
-    // filterText: {
-    //     position: "absolute",
-    //     color: "black",
-    //     right: 65,
-    //     top: 10,
-    //     fontSize: 12,
-    // },
+    wishListIcon: {
+        color: "black",
+        marginRight: 30,
+    },
+    avatarIcon: {
+        marginRight: 22,
+    },
     itemHoriz: {
         backgroundColor: '#fff',
         padding: 20,
