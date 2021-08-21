@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     cartItem: {
         flexDirection: "row",
         margin: 20,
-        marginTop: 40,
+        marginTop: 10,
         padding: 10,
         backgroundColor: "white",
     },

@@ -23,6 +23,7 @@ function Cart() {
             <CartItem />
             <CartItem />
             <CartItem />
+            <CartItem />
 
             <View style={styles.priceOptions}>
                 <Text style={styles.totalText}>TOTAL:</Text>
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
     },
     topNav: {
         marginTop: 30,
+        marginBottom: 20,
         flexDirection: "row",
         alignItems: "center",
     },
