@@ -20,6 +20,7 @@ function CardDetails() {
                 <TextInput style={styles.inputField} />
             </View>
 
+            {/* <View style={styles.lastRow}> */}
             <View style={styles.inputViewLastOne}>
                 <Text style={styles.textHeading}>Valid Through (MM/YY)</Text>
                 <TextInput style={styles.inputField} />
@@ -28,6 +29,11 @@ function CardDetails() {
             <View style={styles.inputViewLastTwo}>
                 <Text style={styles.textHeading}>CVV</Text>
                 <TextInput style={styles.inputField} />
+            </View>
+            {/* </View> */}
+
+            <View style={styles.addCartButton}>
+                <Text style={styles.addCartText}>Proceed to Payment</Text>
             </View>
 
         </SafeAreaView>
@@ -68,7 +74,7 @@ const styles = StyleSheet.create({
         padding: 10,
         textTransform: "none",
         borderRadius: 5,
-        width: "80vw",
+        width: "88vw",
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.2,
@@ -83,5 +89,39 @@ const styles = StyleSheet.create({
     inputViewLastTwo: {
         paddingLeft: 20,
         marginTop: 20,
+    },
+    lastRow: {
+        flexDirection: 'row',
+        width: 240,
+    },
+    // inputFieldLast: {
+    //     marginTop: 10,
+    //     height: 40,
+    //     borderWidth: 1,
+    //     padding: 10,
+    //     textTransform: "none",
+    //     borderRadius: 5,
+    //     width: "100%",
+    //     shadowColor: '#000',
+    //     shadowOffset: { width: 0, height: 1 },
+    //     shadowOpacity: 0.2,
+    //     shadowRadius: 1,
+    //     elevation: 5,
+    //     color: "black",
+    // },
+    addCartButton: {
+        marginTop: 30,
+        backgroundColor: "#2D9CDB",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingHorizontal: 45,
+        paddingVertical: 10,
+        borderRadius: 5,
+        marginHorizontal: 20,
+    },
+    addCartText: {
+        color: "#fff",
+        fontWeight: 600,
+        fontSize: 20,
     },
 })

@@ -15,13 +15,14 @@ import Cart from './Screens/Cart';
 import CartItem from './Screens/CartItem';
 import Payments from './Screens/Payments';
 import CardDetails from './Screens/CardDetails';
+import SuccessScreen from './Screens/SuccessScreen';
 
 export default function App() {
   const Stack = createStackNavigator();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="CardDetails" headerMode="none">
+      <Stack.Navigator initialRouteName="SuccessScreen" headerMode="none">
         {/* <Stack.Screen name="LoginTabs" component={LoginTabs} /> */}
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
 
@@ -38,6 +39,7 @@ export default function App() {
         <Stack.Screen name="Cart" component={Cart} />
         <Stack.Screen name="Payments" component={Payments} />
         <Stack.Screen name="CardDetails" component={CardDetails} />
+        <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
