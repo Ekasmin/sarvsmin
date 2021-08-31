@@ -16,13 +16,16 @@ import CartItem from './Screens/CartItem';
 import Payments from './Screens/Payments';
 import CardDetails from './Screens/CardDetails';
 import SuccessScreen from './Screens/SuccessScreen';
+import OrderHistory from './Screens/OrderHistory';
+import UserProfile from './Screens/UserProfile';
+import Addresses from './Screens/Addresses';
 
 export default function App() {
   const Stack = createStackNavigator();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SuccessScreen" headerMode="none">
+      <Stack.Navigator initialRouteName="Addresses" headerMode="none">
         {/* <Stack.Screen name="LoginTabs" component={LoginTabs} /> */}
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
 
@@ -40,6 +43,10 @@ export default function App() {
         <Stack.Screen name="Payments" component={Payments} />
         <Stack.Screen name="CardDetails" component={CardDetails} />
         <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
+        <Stack.Screen name="OrderHistory" component={OrderHistory} />
+
+        <Stack.Screen name="UserProfile" component={UserProfile} />
+        <Stack.Screen name="Addresses" component={Addresses} />
       </Stack.Navigator>
     </NavigationContainer>
   );

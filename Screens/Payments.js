@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     navText: {
         marginLeft: 20,
         fontSize: 20,
-        fontWeight: 700,
+        fontWeight: 800,
     },
     DebitCardView: {
         marginTop: 30,

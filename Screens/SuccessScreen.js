@@ -6,7 +6,7 @@ function SuccessScreen() {
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.topView}>
-                <IconFontAwesome style={styles.successIcon} name="check" size={36} />
+                <IconFontAwesome style={styles.successIcon} name="check" size={40} />
                 <Text style={styles.paymentSuccessText}>Payment Successful</Text>
             </View>
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import CartItem from './CartItem';
 
@@ -19,11 +19,19 @@ function Cart() {
                 </View>
             </View>
 
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
+            <ScrollView style={styles.scrollView}>
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+            </ScrollView>
+
 
             <View style={styles.priceOptions}>
                 <Text style={styles.totalText}>TOTAL:</Text>
@@ -33,6 +41,7 @@ function Cart() {
             <View style={styles.addCartButton}>
                 <Text style={styles.addCartText}>Add To Bag</Text>
             </View>
+
 
         </SafeAreaView>
     )
@@ -59,7 +68,7 @@ const styles = StyleSheet.create({
     navText: {
         marginLeft: 20,
         fontSize: 20,
-        fontWeight: 700,
+        fontWeight: 800,
     },
     rightNavRow: {
         flexDirection: "row",
@@ -78,6 +87,9 @@ const styles = StyleSheet.create({
         fontWeight: 400,
         fontSize: 14,
         color: "black",
+    },
+    priceOptions: {
+        marginTop: 10,
     },
     priceText: {
         fontWeight: 600,
