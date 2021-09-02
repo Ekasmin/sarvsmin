@@ -3,7 +3,7 @@ import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import OrderItem from './OrderItem';
 
-function OrderHistory() {
+function OrderHistory({ navigation }) {
     return (
         <SafeAreaView style={styles.safeArea}>
 

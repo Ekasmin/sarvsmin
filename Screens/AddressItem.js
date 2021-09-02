@@ -1,6 +1,5 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
-import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 
 function AddressItem({ addressDesc, addressInfoOne, addressInfoTwo }) {
     return (

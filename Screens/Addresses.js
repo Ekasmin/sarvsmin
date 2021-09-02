@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import AddressItem from './AddressItem';
 
-function Addresses() {
+function Addresses({ navigation }) {
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.topNav}>
