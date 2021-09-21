@@ -20,13 +20,14 @@ import OrderHistory from './Screens/OrderHistory';
 import UserProfile from './Screens/UserProfile';
 import Addresses from './Screens/Addresses';
 import AddressDetails from './Screens/AddressDetails';
+import Likes from './Screens/Likes';
 
 export default function App() {
   const Stack = createStackNavigator();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="AddressDetails" headerMode="none">
+      <Stack.Navigator initialRouteName="HomeTabs" headerMode="none">
         {/* <Stack.Screen name="LoginTabs" component={LoginTabs} /> */}
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
 
@@ -41,6 +42,7 @@ export default function App() {
 
         <Stack.Screen name="SingleItemPage" component={SingleItemPage} />
         <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="Likes" component={Likes} />
         <Stack.Screen name="Payments" component={Payments} />
         <Stack.Screen name="CardDetails" component={CardDetails} />
         <Stack.Screen name="SuccessScreen" component={SuccessScreen} />

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View, CheckBox, Image, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 // import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
+import { DrawerActions } from '@react-navigation/native';
 
 
 function UserProfile({ navigation }) {
@@ -11,28 +12,22 @@ function UserProfile({ navigation }) {
     const [rePassword, setRePassword] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
 
-    const [isSelected, setIsSelected] = useState(false);
-
-    const CheckboxSelection = (e) => {
-        isSelected === true ? setIsSelected(false) : setIsSelected(true);
-    }
-
-    const handleLogin = () => {
-        if (!email || !password || !rePassword || !phoneNumber) {
-            alert('Please fill the required details')
-        }
-        else if (!isSelected) {
-            alert('Please check the checkbox')
-        }
-        else {
-            navigation.navigate('Home')
-        }
-    }
+    // const handleLogin = () => {
+    //     if (!email || !password || !rePassword || !phoneNumber) {
+    //         alert('Please fill the required details')
+    //     }
+    //     else if (!isSelected) {
+    //         alert('Please check the checkbox')
+    //     }
+    //     else {
+    //         navigation.navigate('Home')
+    //     }
+    // }
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.topNav}>
                 <View style={styles.leftNavRow}>
-                    <IconFontAwesome style={styles.goBackIcon} name="arrow-left" size={26} />
+                    <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
                     <Text style={styles.navText}>User Profile</Text>
                 </View>
 
@@ -89,12 +84,12 @@ function UserProfile({ navigation }) {
 
                     <View style={styles.buttonView}>
                         <TouchableOpacity style={styles.buttonManageAddresses}>
-                            <Text style={styles.buttonText} onClick={e => handleLogin(e)}>
+                            <Text style={styles.buttonText} onClick={e => navigation.navigate('Addresses')}>
                                 Manage Addresses
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonOrderHistory}>
-                            <Text style={styles.buttonTextOrder} onClick={e => handleLogin(e)}>
+                            <Text style={styles.buttonTextOrder} onClick={e => navigation.navigate('OrderHistory')}>
                                 Order History
                             </Text>
                         </TouchableOpacity>

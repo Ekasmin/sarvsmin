@@ -5,6 +5,8 @@ import Home from '../Screens/Home';
 import Profile from '../Screens/Profile';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
+import UserProfile from '../Screens/UserProfile';
+import Cart from '../Screens/Cart';
 
 function HomeTabs({ navigation }) {
     const Drawer = createDrawerNavigator();
@@ -32,8 +34,26 @@ function HomeTabs({ navigation }) {
                 }
                 } />
             <Drawer.Screen
+                name="Cart"
+                component={Cart}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View style={styles.tab__home}>
+                            <IconFontAwesome
+                                name="user"
+                                size={20}
+                                style={{
+                                    ...styles.tab__home__icon,
+                                    color: focused ? "#e32f45" : "#748c94",
+                                }}
+                            />
+                        </View>
+                    ),
+                }
+                } />
+            <Drawer.Screen
                 name="Profile"
-                component={Profile}
+                component={UserProfile}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View style={styles.tab__home}>

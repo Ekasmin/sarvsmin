@@ -3,12 +3,12 @@ import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import WalletSection from './WalletSection';
 
-function Payments() {
+function Payments({ navigation }) {
     return (
         <SafeAreaView style={styles.safeArea}>
 
             <View style={styles.topNav}>
-                <IconFontAwesome style={styles.goBackIcon} name="arrow-left" size={26} />
+                <IconFontAwesome style={styles.goBackIcon} name="arrow-left" size={26} onPress={() => navigation.goBack()} />
                 <Text style={styles.navText}>Payment</Text>
             </View>
 
@@ -23,7 +23,7 @@ function Payments() {
             <View style={styles.DebitCardView}>
                 <Text style={styles.payTypeHeading}>Credit/Debit Cards</Text>
                 <View style={styles.cardContainer}>
-                    <IconFontAwesome style={styles.addQuantityIcon} name="plus-circle" size={30} />
+                    <IconFontAwesome style={styles.addQuantityIcon} name="plus-circle" size={30} onClick={e => navigation.navigate('CardDetails')} />
                     <View style={styles.cardText}>
                         <Text style={styles.cardHeadingOne}>Add New Card</Text>
                         <Text style={styles.cardHeadingTwo}>Save and Pay via Cards.</Text>
@@ -42,7 +42,7 @@ function Payments() {
                     <Image style={styles.netBankingImage} source={{ uri: require(`../assets/icici-logo.png`) }} />
                     <Image style={styles.netBankingImage} source={{ uri: require(`../assets/sbi-logo.png`) }} />
                     <Image style={styles.netBankingImage} source={{ uri: require(`../assets/axis-logo.png`) }} />
-                    <IconFontAwesome style={styles.addQuantityIcon} name="plus-circle" size={30} />
+                    {/* <IconFontAwesome style={styles.addQuantityIcon} name="plus-circle" size={30} /> */}
                 </View>
             </View>
 
@@ -52,7 +52,7 @@ function Payments() {
             </View>
 
             <View style={styles.addCartButton}>
-                <Text style={styles.addCartText}>Add To Bag</Text>
+                <Text style={styles.addCartText} onClick={e => navigation.navigate('SuccessScreen')}>Proceed to Pay</Text>
             </View>
 
         </SafeAreaView>

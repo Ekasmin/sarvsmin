@@ -8,7 +8,7 @@ function Addresses({ navigation }) {
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.topNav}>
                 <View style={styles.leftNavRow}>
-                    <IconFontAwesome style={styles.goBackIcon} name="arrow-left" size={26} />
+                    <IconFontAwesome style={styles.goBackIcon} name="arrow-left" size={26} onPress={() => navigation.goBack()} />
                     <Text style={styles.navText}>Addresses</Text>
                 </View>
             </View>

@@ -2,11 +2,11 @@ import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet, TextInput } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 
-function CardDetails() {
+function CardDetails({ navigation }) {
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.topNav}>
-                <IconFontAwesome style={styles.goBackIcon} name="arrow-left" size={26} />
+                <IconFontAwesome style={styles.goBackIcon} name="arrow-left" size={26} onPress={() => navigation.goBack()} />
                 <Text style={styles.navText}>Payment</Text>
             </View>
 
@@ -33,7 +33,7 @@ function CardDetails() {
             {/* </View> */}
 
             <View style={styles.addCartButton}>
-                <Text style={styles.addCartText}>Proceed to Payment</Text>
+                <Text style={styles.addCartText} onClick={e => navigation.navigate('SuccessScreen')}>Proceed to Pay</Text>
             </View>
 
         </SafeAreaView>

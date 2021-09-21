@@ -2,7 +2,10 @@ import React from 'react'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 
-function SuccessScreen() {
+function SuccessScreen({ navigation }) {
+    setTimeout(() => {
+        navigation.navigate('OrderHistory')
+    }, 3000);
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.topView}>
@@ -11,11 +14,8 @@ function SuccessScreen() {
             </View>
 
             <View style={styles.centerView}>
-                <Text style={styles.paymentSuccessDesc}>Tempor anim nulla quis enim irure aliquip exercitation cillum. Non culpa ad labore.</Text>
-            </View>
-
-            <View style={styles.bottomView}>
-                <Text style={styles.addCartText}>Continue Shopping</Text>
+                <Text style={styles.paymentSuccessDesc}>Thank you for shopping with us.</Text>
+                <Text style={styles.paymentSuccessDesc}>We hope you would like our service.</Text>
             </View>
 
         </SafeAreaView>
@@ -49,20 +49,5 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#FFFFFF',
         fontWeight: 200,
-    },
-    bottomView: {
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-        paddingHorizontal: 45,
-        paddingVertical: 10,
-        borderRadius: 5,
-        marginHorizontal: 20,
-        marginBottom: 50,
-    },
-    addCartText: {
-        color: "#81AA66",
-        fontWeight: 600,
-        fontSize: 20,
     },
 })

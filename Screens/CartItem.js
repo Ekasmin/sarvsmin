@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 
-function CartItem() {
+function CartItem({ comp }) {
     return (
         <View style={styles.cartItem}>
             <Image style={styles.image} source={{ uri: "https://images.pexels.com/photos/7045701/pexels-photo-7045701.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" }} />
@@ -13,11 +13,17 @@ function CartItem() {
                 <Text style={styles.itemPrice}>Price</Text>
             </View>
 
-            <View style={styles.rightInfo}>
-                <IconFontAwesome style={styles.addQuantityIcon} name="plus-circle" size={20} />
-                <Text style={styles.itemCount}>01</Text>
-                <IconFontAwesome style={styles.minusQuantityIcon} name="minus-circle" size={20} />
-            </View>
+            {{ comp } == "Cart"
+                ? <View style={styles.rightInfo}>
+                    <IconFontAwesome style={styles.addQuantityIcon} name="plus-circle" size={20} />
+                    <Text style={styles.itemCount}>01</Text>
+                    <IconFontAwesome style={styles.minusQuantityIcon} name="minus-circle" size={20} />
+                </View>
+                : <View style={styles.rightInfo}>
+                    <IconFontAwesome style={styles.share} name="share-alt" size={20} />
+                    <Text style={styles.addToCart}>Add To Cart</Text>
+                </View>
+            }
         </View>
     )
 }
@@ -64,5 +70,20 @@ const styles = StyleSheet.create({
     },
     itemCount: {
         marginVertical: 2,
+    },
+    rightInfo: {
+        alignItems: "center",
+        position: "absolute",
+        right: 20,
+        bottom: 10,
+    },
+    share: {
+        position: "absolute",
+        right: 0,
+        top: -50,
+    },
+    addToCart: {
+        color: "orange",
+        fontWeight: 700,
     },
 })

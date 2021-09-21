@@ -2,6 +2,7 @@ import React from 'react'
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import OrderItem from './OrderItem';
+import { DrawerActions } from '@react-navigation/native';
 
 function OrderHistory({ navigation }) {
     return (
@@ -9,8 +10,8 @@ function OrderHistory({ navigation }) {
 
             <View style={styles.topNav}>
                 <View style={styles.leftNavRow}>
-                    <IconFontAwesome style={styles.goBackIcon} name="arrow-left" size={26} />
-                    <Text style={styles.navText}>Your Bag</Text>
+                    <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
+                    <Text style={styles.navText}>Order History</Text>
                 </View>
             </View>
 

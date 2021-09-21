@@ -1,11 +1,13 @@
 import React from 'react'
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
+import IconFontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { ShoppingCartIcon } from '@heroicons/react/solid'
 import CartItem from './CartItem';
 import { DrawerActions } from '@react-navigation/native';
 
 
-function Cart({ navigation }) {
+function Likes({ navigation }) {
     return (
         <SafeAreaView style={styles.safeArea}>
 
@@ -13,46 +15,33 @@ function Cart({ navigation }) {
                 <View style={styles.leftNavRow}>
                     {/* <IconFontAwesome style={styles.goBackIcon} name="arrow-left" size={26} onPress={() => navigation.goBack()} /> */}
                     <IconFontAwesome name="navicon" style={styles.navIcon} size={30} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
-                    <Text style={styles.navText}>Your Bag</Text>
+                    <Text style={styles.navText}>Your Favorites</Text>
                 </View>
 
                 <View style={styles.rightNavRow}>
-                    <IconFontAwesome style={styles.wishListIcon} name="heart-o" size={26} onClick={e => navigation.navigate('Likes')} />
+                    <IconFontAwesome5 style={styles.shoppingCartIcon} name="shopping-cart" size={20} onClick={e => navigation.navigate('Cart')} />
+                    {/* <ShoppingCartIcon className="w-16 h-16" /> */}
                 </View>
             </View>
 
             <ScrollView style={styles.scrollView}>
-                <CartItem comp="Cart" />
-                <CartItem comp="Cart" />
-                <CartItem comp="Cart" />
-                <CartItem comp="Cart" />
-                <CartItem comp="Cart" />
-                <CartItem comp="Cart" />
-                <CartItem comp="Cart" />
-                <CartItem comp="Cart" />
-                <CartItem comp="Cart" />
-                <CartItem comp="Cart" />
-                <CartItem comp="Cart" />
-                <CartItem comp="Cart" />
-
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
+                <CartItem />
             </ScrollView>
-
-
-            <View style={styles.priceOptions}>
-                <Text style={styles.totalText}>TOTAL:</Text>
-                <Text style={styles.priceText}>Rs. 2,000</Text>
-            </View>
-
-            <View style={styles.addCartButton}>
-                <Text style={styles.addCartText} onClick={e => navigation.navigate('Payments')}>Checkout</Text>
-            </View>
-
 
         </SafeAreaView>
     )
 }
 
-export default Cart
+export default Likes
 
 const styles = StyleSheet.create({
     safeArea: {
@@ -81,7 +70,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "flex-end",
     },
-    wishListIcon: {
+    shoppingCartIcon: {
         marginRight: 30,
     },
     priceOptions: {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 
-function AddressItem({ addressDesc, addressInfoOne, addressInfoTwo }) {
+function AddressItem({ addressDesc, addressInfoOne, addressInfoTwo, navigation }) {
     return (
         <View style={styles.cartItem}>
 
